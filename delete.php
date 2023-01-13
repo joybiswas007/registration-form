@@ -1,7 +1,7 @@
 <?php
 require_once 'db/conn.php';
 
-if(!$_GET['id']){
+if (!$_GET['id']) {
 	include 'includes/errormessage.php';
 } else {
 	//get id value
@@ -11,7 +11,7 @@ if(!$_GET['id']){
 	$result = $crud->deleteDbase($id);
 
 	//redirect to list
-	if($result){
+	if ($result) {
 		header("Location: viewrecords.php");
 	} else {
 		include 'includes/errormessage.php';
