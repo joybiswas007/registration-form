@@ -29,14 +29,14 @@
           </div>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-              <?php 
-              if (!isset($_SESSION['id'])){
-              ?>
-              <a class="nav-link active" aria-current="Dashboard" href="login.php">Login</a>
-              <?php }else { ?>
-                <span>Welcome, <?php echo $_SESSION['username'];?>!</span>
+              <?php
+              if (!isset($_SESSION['id'])) {
+                ?>
+                <a class="nav-link active" aria-current="Dashboard" href="login.php">Login</a>
+              <?php } else { ?>
+                <span>Welcome, <?php echo $_SESSION['username']; ?>!</span>
                 <a class="nav-link active" aria-current="Home" href="logout.php">Logout</a>
-                <?php } ?>
+              <?php } ?>
             </div>
           </div>
         </div>
