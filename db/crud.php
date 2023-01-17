@@ -92,6 +92,20 @@ class crud
 		$result = $this->db->query($sql);
 		return $result;
 	}
+	public function getProfessionID($id)
+	{
+		try {
+			$sql = "SELECT * FROM profession WHERE profession_id = :id";
+			$stmt = $this->db->prepare($sql);
+			$stmt->bindparam(":id", $id);
+			$stmt->execute();
+			$result = $stmt->fetch();
+			return $result;
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			return false;
+		}
+	}
 
 }
 ?>

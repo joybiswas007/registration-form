@@ -2,6 +2,7 @@
 $title = 'Browse Index';
 require_once 'includes/header.php';
 require_once 'db/conn.php';
+require_once 'sendemail.php';
 
 if (isset($_POST['submit'])) {
   $fullname = $_POST['fullname'];
@@ -11,8 +12,10 @@ if (isset($_POST['submit'])) {
   $dob = $_POST['dob'];
   $profession = $_POST['profession'];
   $isSuccess = $crud->insertDbase($fullname, $email, $password, $phone, $dob, $profession);
+  $professionName = $crud->getProfessionID($profession);
 
   if ($isSuccess) {
+    SendEmail::SendMail($email, 'Welcome to the party.', 'Registration has been successfully.');
     include 'includes/successmessage.php';
   } else {
     include 'includes/errormessage.php';
@@ -27,7 +30,7 @@ if (isset($_POST['submit'])) {
       Name: <?php echo $_POST['fullname']; ?>
     </h5>
     <h6 class="card-subtitle mb-2 text-muted">
-      Profession Name: <?php echo $_POST['profession']; ?>
+      Profession Name: <?php echo $professionName['name']; ?>
     </h6>
     <p class="card-text">
       Email address: <?php echo $_POST['email']; ?>
