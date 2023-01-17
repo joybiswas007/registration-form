@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="submit" value="Login" class="btn btn-light">
     <a href="#">Reset Password</a>
 
-
 </form>
 
 <?php include_once 'includes/footer.php'; ?>
