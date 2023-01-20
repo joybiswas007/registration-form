@@ -10,6 +10,8 @@ if (!isset($_GET['id'])) {
   $id = $_GET['id'];
   $result = $crud->getDetails($id);
   ?>
+
+  <img src="<?php echo empty($result['avatar_path']) ? "uploads/default.png" : $result['avatar_path']; ?>" style="width: 20%; height: 20%;" />
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">
@@ -20,9 +22,6 @@ if (!isset($_GET['id'])) {
       </h6>
       <p class="card-text">
         Email address: <?php echo $result['email']; ?>
-      </p>
-      <p class="card-text">
-        Password: <?php echo $result['password']; ?>
       </p>
       <p class="card-text">
         Date of Birth: <?php echo $result['dob']; ?>

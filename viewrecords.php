@@ -6,7 +6,7 @@ require_once 'db/conn.php';
 //get all from database
 $results = $crud->getDbase();
 ?>
-<table class="table">
+<table class="table table-success table-striped">
 	<tr>
 		<th>#</th>
 		<th>Fullname</th>

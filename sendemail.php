@@ -6,7 +6,7 @@ class SendEmail
     {
         $key = "Enter your sendgrid API key here";
         $email = new \SendGrid\Mail\Mail();
-        $email->setFrom("Enter email address here", "email username");
+        $email->setFrom("Enter your mail", "set username");
         $email->setSubject($subject);
         $email->addTo($to);
         $email->addContent("text/plain", $content);

@@ -11,19 +11,28 @@ if (isset($_POST['submit'])) {
   $phone = $_POST['phone'];
   $dob = $_POST['dob'];
   $profession = $_POST['profession'];
-  $isSuccess = $crud->insertDbase($fullname, $email, $password, $phone, $dob, $profession);
+
+  $orig_file = $_FILES['avatar']['tmp_name'];
+  $ext = strtolower(pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION));
+  $target_dir = "../uploads/";
+  $avatar_path = "$target_dir$phone.$ext";
+  move_uploaded_file($orig_file,$avatar_path);
+
+  $isSuccess = $crud->insertDbase($fullname, $email, $password, $phone, $dob, $profession, $avatar_path);
   $professionName = $crud->getProfessionID($profession);
 
+
   if ($isSuccess) {
-    SendEmail::SendMail($email, 'Welcome to the party.', 'Registration has been successfully.');
+    SendEmail::SendMail($email, 'Welcome to the party.', 'Registration has been successfull.');
     include 'includes/successmessage.php';
+
   } else {
     include 'includes/errormessage.php';
   }
 
 }
 ?>
-
+<img src="<?php echo $avatar_path; ?>" style="width: 20%; height: 20%;" />
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">
@@ -34,9 +43,6 @@ if (isset($_POST['submit'])) {
     </h6>
     <p class="card-text">
       Email address: <?php echo $_POST['email']; ?>
-    </p>
-    <p class="card-text">
-      Password: <?php echo $_POST['password']; ?>
     </p>
     <p class="card-text">
       Date of Birth: <?php echo $_POST['dob']; ?>

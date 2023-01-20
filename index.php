@@ -41,6 +41,12 @@ $results = $crud->getProfession();
 				<?php } ?>
 			</select>
 		</div>
+		<br />
+		<div class="form-group">
+			<label for="avatar" class="form-label">Upload Image</label>
+			<input class="form-control" accept="image/*" type="file" id="avatar" name="avatar">
+			<div id="avatarHelpBlock" class="form-text text-danger">Uploading image is optional.</div>
+		</div>
 		<button type="submit" id="submit" name="submit" class="btn btn-primary btn-lg">Submit</button>
 </form>
 

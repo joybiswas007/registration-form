@@ -7,21 +7,23 @@ class crud
 	{ //Constructor to initialize private variables to the database connection
 		$this->db = $conn;
 	}
-	public function insertDbase($fullname, $email, $password, $phone, $dob, $profession)
+	public function insertDbase($fullname, $email, $password, $phone, $dob, $profession, $avatar_path)
 	{
 
 		try {
 			//define sql to be executed
-			$sql = "INSERT INTO dbase (fullname,email,password,phone,dob,profession_id) VALUES (:fullname,:email,:password,:phone,:dob,:profession)";
+			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+			$sql = "INSERT INTO dbase (fullname,email,password,phone,dob,profession_id,avatar_path) VALUES (:fullname,:email,:password,:phone,:dob,:profession,:avatar_path)";
 			//preparing sql to be executed
 			$stmt = $this->db->prepare($sql);
 			//bind all the placeholder to the actual events
 			$stmt->bindparam(':fullname', $fullname);
 			$stmt->bindparam(':email', $email);
-			$stmt->bindparam(':password', $password);
+			$stmt->bindparam(':password', $hashed_password);
 			$stmt->bindparam(':phone', $phone);
 			$stmt->bindparam(':dob', $dob);
 			$stmt->bindparam(':profession', $profession);
+			$stmt->bindparam(':avatar_path', $avatar_path);
 			$stmt->execute();
 			// $stmt->saveData();
 			// $stmt->store_result();
@@ -35,13 +37,14 @@ class crud
 	public function editDbase($id, $fullname, $email, $password, $phone, $dob, $profession)
 	{
 		try {
+			$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 			$sql = "UPDATE `dbase` SET `fullname`=:fullname,`email`=:email,`password`=:password,`phone`=:phone,`dob`=:dob,`profession_id`=:profession WHERE dbase_id = :id";
 			$stmt = $this->db->prepare($sql);
 			//bind all the placeholder to the actual events
 			$stmt->bindparam(":id", $id);
 			$stmt->bindparam(":fullname", $fullname);
 			$stmt->bindparam(":email", $email);
-			$stmt->bindparam(":password", $password);
+			$stmt->bindparam(":password", $hashed_password);
 			$stmt->bindparam(":phone", $phone);
 			$stmt->bindparam(":dob", $dob);
 			$stmt->bindparam(":profession", $profession);
