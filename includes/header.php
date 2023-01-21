@@ -14,31 +14,30 @@
 </head>
 
 <body>
-  <div class="container">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Application</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-link active" aria-current="Home" href="index.php">Home</a>
-            <a class="nav-link" href="viewrecords.php">View Records</a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-              <?php
-              if (!isset($_SESSION['id'])) {
-                ?>
-                <a class="nav-link active" aria-current="Dashboard" href="login.php">Login</a>
-              <?php } else { ?>
-                <span>Welcome, <?php echo $_SESSION['username']; ?>!</span>
-                <a class="nav-link active" aria-current="Home" href="logout.php">Logout</a>
-              <?php } ?>
-            </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.php">Application</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="Home" href="index.php">Home</a>
+          <a class="nav-link" href="viewrecords.php">View Records</a>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <?php
+            if (!isset($_SESSION['id'])) {
+              ?>
+              <a class="nav-link active" aria-current="Dashboard" href="login.php">Login</a>
+            <?php } else { ?>
+              <span>Welcome, <?php echo $_SESSION['username']; ?>!</span>
+              <a class="nav-link active" aria-current="Home" href="logout.php">Logout</a>
+            <?php } ?>
           </div>
         </div>
-    </nav>
-    <br />
+      </div>
+  </nav>
+  <div class="container">
