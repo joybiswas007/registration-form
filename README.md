@@ -5,7 +5,7 @@ A simple registration page written in PHP.
 </h1>
 
 ### Configuration
-See "db/SysOps.sql" for database structure and create a one.
+See "db/SysOps.sql" for database structure and create one.
 ### Installing SendGrid
 Run the below command to install SendGrid
 
