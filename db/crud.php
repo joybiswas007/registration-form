@@ -25,8 +25,6 @@ class crud
 			$stmt->bindparam(':profession', $profession);
 			$stmt->bindparam(':avatar_path', $avatar_path);
 			$stmt->execute();
-			// $stmt->saveData();
-			// $stmt->store_result();
 			return true;
 		} catch (PDOException $e) {
 			echo $e->getMessage();

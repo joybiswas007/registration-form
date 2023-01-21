@@ -7,7 +7,7 @@ $results = $crud->getProfession();
 
 <h1 class="text-center"> Registration Form </h1>
 
-<form method="post" action="success.php">
+<form method="post" action="success.php" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="fullname" class="form-label">Fullname</label>
 		<input type="fullname" id="fullname" name="fullname" class="form-control" required>

@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
 
   $orig_file = $_FILES['avatar']['tmp_name'];
   $ext = strtolower(pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION));
-  $target_dir = "../uploads/";
+  $target_dir = "uploads/";
   $avatar_path = "$target_dir$phone.$ext";
   move_uploaded_file($orig_file,$avatar_path);
 
