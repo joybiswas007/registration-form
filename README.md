@@ -12,11 +12,8 @@ Run the below command to install SendGrid
 ```composer require sendgrd/sendgrid```
 
 I've used SendGrid for sending email. So, change the API key, email, and username in "sendemail.php".
-
 ### Login
-
-``` Username: admin ``` 
-
-``` Password: password```
+```Username: admin```<br/>
+```Password: password```
 
 Change it in "db/conn.php."
